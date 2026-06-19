@@ -8,7 +8,7 @@
     "*://*.trendyol.com/*",
     "*://*.hepsiburada.com/*",
     "*://*.amazon.com.tr/*",
-    "http://localhost:3000/*"
+    "https://fiyat-takip-ai.vercel.app/*"
   ],
   "action": {
     "default_popup": "popup.html"

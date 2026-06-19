@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:3000'; // TODO: Update during build for Production (e.g. process.env.NEXT_PUBLIC_API_URL)
+const API_BASE_URL = 'https://fiyat-takip-ai.vercel.app'; // TODO: Update during build for Production (e.g. process.env.NEXT_PUBLIC_API_URL)
 
 (async function() {
   let lastAnalyzedUrl = '';

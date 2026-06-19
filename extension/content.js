@@ -82,7 +82,7 @@ function renderResult(container, data) {
       <div style="margin-top: 15px; padding: 12px; background: rgba(59, 130, 246, 0.15); border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.3);">
         <div style="color: #60a5fa; font-weight: bold; font-size: 13px; margin-bottom: 5px;">💡 Daha Ucuz Alternatif Var!</div>
         <div style="font-size: 12px; margin-bottom: 8px;">${bestAlt.name.substring(0, 40)}... sadece <b style="color: #4ade80;">${bestAlt.price} TL</b></div>
-        <a href="http://localhost:3000/urun/${bestAlt.id}" target="_blank" style="display: block; text-align: center; background: #3b82f6; color: white; padding: 6px; border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 12px;">Oraya Git</a>
+        <a href="https://fiyat-takip-ai.vercel.app/urun/${bestAlt.id}" target="_blank" style="display: block; text-align: center; background: #3b82f6; color: white; padding: 6px; border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 12px;">Oraya Git</a>
       </div>
     `;
   }
@@ -112,7 +112,7 @@ function renderResult(container, data) {
 
       ${alternativesHtml}
 
-      <a href="http://localhost:3000/urun/${data.matchGroupId}" target="_blank" class="fiyat-takip-link" style="margin-top: ${alternativesHtml ? '10px' : '15px'};">
+      <a href="https://fiyat-takip-ai.vercel.app/urun/${data.matchGroupId}" target="_blank" class="fiyat-takip-link" style="margin-top: ${alternativesHtml ? '10px' : '15px'};">
         Detaylı Analizi Gör →
       </a>
     </div>

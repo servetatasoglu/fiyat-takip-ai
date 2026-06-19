@@ -2,7 +2,7 @@
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'analyze_product') {
-    const apiUrl = 'http://localhost:3000/api/extension/analyze';
+    const apiUrl = 'https://fiyat-takip-ai.vercel.app/api/extension/analyze';
     
     fetch(apiUrl, {
       method: 'POST',
