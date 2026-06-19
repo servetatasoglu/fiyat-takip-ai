@@ -34,7 +34,7 @@ const NEGATIVE_WORDS = new Set(['kötü', 'bozuk', 'kırık', 'iade', 'berbat', 
 
 export function analyzeReviews(reviews) {
   if (!reviews || reviews.length === 0) {
-    return { fakePercent: 0, realPercent: 0, trustScore: 50, flags: ['Yeterli yorum yok'] };
+    return { fakePercent: 0, realPercent: 100, trustScore: 85, flags: ['Henüz analiz edilecek yorum yok'] };
   }
 
   let fakeCount = 0;
@@ -127,7 +127,7 @@ export function analyzeReviews(reviews) {
   
   let trustScore = 100 - fakePercent;
   if (flags.size > 2) trustScore -= 10;
-  if (reviews.length < 5) trustScore -= 20;
+  if (reviews.length < 5) trustScore -= 5;
   trustScore = Math.max(0, Math.min(100, Math.round(trustScore)));
 
   return {

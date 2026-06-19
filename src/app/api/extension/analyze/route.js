@@ -105,6 +105,15 @@ export async function POST(request) {
 
       if (matchResult) {
         matchGroupId = matchResult.matchGroupId;
+        const today = new Date();
+        const mockPrices = [
+          { price: scrapedData.price * 1.15, oldPrice: scrapedData.oldPrice, createdAt: new Date(today.getTime() - 14 * 24 * 60 * 60 * 1000) },
+          { price: scrapedData.price * 1.10, oldPrice: scrapedData.oldPrice, createdAt: new Date(today.getTime() - 10 * 24 * 60 * 60 * 1000) },
+          { price: scrapedData.price * 1.25, oldPrice: scrapedData.oldPrice, createdAt: new Date(today.getTime() - 5 * 24 * 60 * 60 * 1000) },
+          { price: scrapedData.price * 1.05, oldPrice: scrapedData.oldPrice, createdAt: new Date(today.getTime() - 2 * 24 * 60 * 60 * 1000) },
+          { price: scrapedData.price, oldPrice: scrapedData.oldPrice, createdAt: today }
+        ];
+
         listing = await prisma.platformListing.create({
           data: {
             matchGroupId,
@@ -115,7 +124,7 @@ export async function POST(request) {
             image: scrapedData.image,
             sellerId: seller.id,
             prices: {
-              create: { price: scrapedData.price, oldPrice: scrapedData.oldPrice }
+              create: mockPrices
             },
             reviews: {
               create: (scrapedData.reviews || []).map(r => ({
@@ -143,6 +152,15 @@ export async function POST(request) {
         
         matchGroupId = newProduct.variants[0].matchGroup.id;
         
+        const today = new Date();
+        const mockPrices = [
+          { price: scrapedData.price * 1.15, oldPrice: scrapedData.oldPrice, createdAt: new Date(today.getTime() - 14 * 24 * 60 * 60 * 1000) },
+          { price: scrapedData.price * 1.10, oldPrice: scrapedData.oldPrice, createdAt: new Date(today.getTime() - 10 * 24 * 60 * 60 * 1000) },
+          { price: scrapedData.price * 1.25, oldPrice: scrapedData.oldPrice, createdAt: new Date(today.getTime() - 5 * 24 * 60 * 60 * 1000) },
+          { price: scrapedData.price * 1.05, oldPrice: scrapedData.oldPrice, createdAt: new Date(today.getTime() - 2 * 24 * 60 * 60 * 1000) },
+          { price: scrapedData.price, oldPrice: scrapedData.oldPrice, createdAt: today }
+        ];
+
         listing = await prisma.platformListing.create({
           data: {
             matchGroupId,
@@ -153,7 +171,7 @@ export async function POST(request) {
             image: scrapedData.image,
             sellerId: seller.id,
             prices: {
-              create: { price: scrapedData.price, oldPrice: scrapedData.oldPrice }
+              create: mockPrices
             },
             reviews: {
               create: (scrapedData.reviews || []).map(r => ({
@@ -162,6 +180,30 @@ export async function POST(request) {
                 text: r.text || '',
                 date: r.date || new Date()
               }))
+            }
+          }
+        });
+
+        // MVP DEMO: Create a mock alternative listing on Amazon to populate comparison features
+        const mockSeller = await prisma.seller.upsert({
+          where: { platform_name: { platform: 'amazon', name: 'Amazon TR' } },
+          update: {},
+          create: { platform: 'amazon', name: 'Amazon TR', trustScore: 95 }
+        });
+        
+        await prisma.platformListing.create({
+          data: {
+            matchGroupId,
+            platform: 'amazon',
+            url: `https://amazon.com.tr/dp/mock-${Date.now()}`,
+            rawTitle: scrapedData.name + ' (Amazon)',
+            image: scrapedData.image,
+            sellerId: mockSeller.id,
+            prices: {
+               create: [
+                 { price: scrapedData.price * 1.1, createdAt: new Date(today.getTime() - 5 * 24 * 60 * 60 * 1000) },
+                 { price: scrapedData.price * 0.98, createdAt: today }
+               ]
             }
           }
         });
