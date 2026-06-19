@@ -116,6 +116,14 @@ export async function POST(request) {
             sellerId: seller.id,
             prices: {
               create: { price: scrapedData.price, oldPrice: scrapedData.oldPrice }
+            },
+            reviews: {
+              create: (scrapedData.reviews || []).map(r => ({
+                author: r.author || 'Anonim',
+                rating: r.rating || 5,
+                text: r.text || '',
+                date: r.date || new Date()
+              }))
             }
           }
         });
@@ -146,6 +154,14 @@ export async function POST(request) {
             sellerId: seller.id,
             prices: {
               create: { price: scrapedData.price, oldPrice: scrapedData.oldPrice }
+            },
+            reviews: {
+              create: (scrapedData.reviews || []).map(r => ({
+                author: r.author || 'Anonim',
+                rating: r.rating || 5,
+                text: r.text || '',
+                date: r.date || new Date()
+              }))
             }
           }
         });
