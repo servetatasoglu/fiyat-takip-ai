@@ -79,10 +79,19 @@ export class BaseScraper {
                  puppeteer.use(StealthPlugin());
               }
               
-              browser = await puppeteer.launch({
-                headless: true,
-                args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-blink-features=AutomationControlled']
-              });
+              const browserlessToken = process.env.BROWSERLESS_TOKEN;
+              
+              if (browserlessToken) {
+                console.log('[SCRAPER] Connecting to Browserless.io...');
+                browser = await puppeteer.connect({
+                  browserWSEndpoint: `wss://chrome.browserless.io?token=${browserlessToken}`,
+                });
+              } else {
+                browser = await puppeteer.launch({
+                  headless: true,
+                  args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-blink-features=AutomationControlled']
+                });
+              }
               const page = await browser.newPage();
               await page.setUserAgent(getRandomUA());
               await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
