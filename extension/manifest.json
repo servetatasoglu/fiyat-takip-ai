@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "FiyatTakip AI - Sahte İndirim Dedektörü",
+  "version": "1.0.0",
+  "description": "Trendyol, Hepsiburada ve Amazon'da sahte indirimleri anında tespit edin ve AI ile en doğru kararı verin.",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "http://localhost:3000/*",
+    "https://*.trendyol.com/*",
+    "https://*.hepsiburada.com/*",
+    "https://*.amazon.com.tr/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.trendyol.com/*",
+        "https://www.hepsiburada.com/*",
+        "https://www.amazon.com.tr/*"
+      ],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "FiyatTakip AI"
+  }
+}

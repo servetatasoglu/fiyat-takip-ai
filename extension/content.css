@@ -1,0 +1,140 @@
+/* content.css */
+#fiyat-takip-ai-root {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999999;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #f1f5f9;
+  pointer-events: none; /* Allows clicking through the container */
+}
+
+.fiyat-takip-card {
+  width: 320px;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(99, 102, 241, 0.2);
+  padding: 16px;
+  pointer-events: auto; /* Enable clicking on the card itself */
+  animation: slideInBottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes slideInBottom {
+  from { transform: translateY(100px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.fiyat-takip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}
+
+.fiyat-takip-brand {
+  font-weight: 800;
+  font-size: 14px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.fiyat-takip-brand span {
+  background: linear-gradient(135deg, #818cf8, #c084fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.fiyat-takip-close {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.fiyat-takip-close:hover {
+  color: #f87171;
+}
+
+.fiyat-takip-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+.fiyat-takip-label {
+  color: #94a3b8;
+}
+
+.fiyat-takip-value {
+  font-weight: 700;
+}
+
+.fiyat-takip-value.buy { color: #4ade80; }
+.fiyat-takip-value.wait { color: #facc15; }
+.fiyat-takip-value.avoid { color: #f87171; }
+
+.fiyat-takip-reasoning {
+  font-size: 12px;
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 12px;
+  line-height: 1.5;
+}
+
+.fiyat-takip-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px 0;
+  font-size: 13px;
+  color: #818cf8;
+  font-weight: 600;
+}
+
+.fiyat-takip-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(129, 140, 248, 0.3);
+  border-top-color: #818cf8;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.fiyat-takip-link {
+  display: block;
+  text-align: center;
+  margin-top: 12px;
+  padding: 8px;
+  background: rgba(99, 102, 241, 0.15);
+  color: #818cf8;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.fiyat-takip-link:hover {
+  background: rgba(99, 102, 241, 0.3);
+  color: #fff;
+}

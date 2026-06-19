@@ -1,0 +1,21 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 512 512'>
+  <rect width='512' height='512' rx='80' fill='url(#bg)'/>
+  <defs>
+    <linearGradient id='bg' x1='0' y1='0' x2='1' y2='1'>
+      <stop offset='0' stop-color='#0f172a'/>
+      <stop offset='1' stop-color='#1e1b4b'/>
+    </linearGradient>
+    <linearGradient id='arrow' x1='0' y1='0' x2='1' y2='1'>
+      <stop offset='0' stop-color='#3b82f6'/>
+      <stop offset='1' stop-color='#7c3aed'/>
+    </linearGradient>
+  </defs>
+  <!-- Price tag shape -->
+  <path d='M140 160 L340 160 L380 200 L380 340 Q380 360 360 360 L140 360 Q120 360 120 340 L120 180 Q120 160 140 160Z' fill='url(#arrow)' opacity='0.15'/>
+  <path d='M140 160 L340 160 L380 200 L380 340 Q380 360 360 360 L140 360 Q120 360 120 340 L120 180 Q120 160 140 160Z' fill='none' stroke='url(#arrow)' stroke-width='3' opacity='0.8'/>
+  <!-- TL symbol -->
+  <text x='256' y='290' font-family='Arial,sans-serif' font-size='120' font-weight='900' text-anchor='middle' fill='white'>₺</text>
+  <!-- Down trend arrow -->
+  <polyline points='150,190 220,230 290,210 370,270' fill='none' stroke='#22c55e' stroke-width='5' stroke-linecap='round' opacity='0.9'/>
+  <polygon points='360,255 385,270 370,290' fill='#22c55e'/>
+</svg>

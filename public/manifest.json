@@ -1,0 +1,48 @@
+{
+  "name": "FiyatTakip",
+  "short_name": "FiyatTakip",
+  "description": "Trendyol, Hepsiburada ve Amazon fiyatlarını karşılaştırın. Gerçek indirimleri bulun.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait-primary",
+  "lang": "tr",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "categories": ["shopping", "finance"],
+  "shortcuts": [
+    {
+      "name": "Alarmlarım",
+      "short_name": "Alarmlar",
+      "url": "/alerts",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Aktüel Ürünler",
+      "short_name": "Aktüel",
+      "url": "/aktuel",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
