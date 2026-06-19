@@ -9,7 +9,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ url: request.url })
+      body: JSON.stringify({ url: request.url, html: request.html })
     })
     .then(response => response.json())
     .then(data => {

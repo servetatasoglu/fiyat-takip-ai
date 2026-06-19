@@ -43,7 +43,7 @@ export async function POST(request) {
     usageMap.set(ip, userUsage);
 
     const body = await request.json();
-    const { url } = body;
+    const { url, html } = body;
 
     if (!url) {
       return NextResponse.json({ error: 'URL gerekli.' }, { status: 400, headers: { 'Access-Control-Allow-Origin': '*' } });
@@ -73,7 +73,7 @@ export async function POST(request) {
     }
 
     // Yoksa scrape yap ve VERİTABANINA KAYDET
-    const scrapedData = await scrapeProduct(cleanUrl);
+    const scrapedData = await scrapeProduct(cleanUrl, html);
     
     if (!scrapedData.success) {
       return NextResponse.json(

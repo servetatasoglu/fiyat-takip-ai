@@ -24,7 +24,8 @@ function initExtension() {
   renderLoading(root);
 
   // Background script'e analizi başlatması için mesaj gönder
-  chrome.runtime.sendMessage({ action: 'analyze_product', url: url }, (response) => {
+  const html = document.documentElement.outerHTML;
+  chrome.runtime.sendMessage({ action: 'analyze_product', url: url, html: html }, (response) => {
     if (chrome.runtime.lastError || !response || response.error) {
       console.error('FiyatTakip AI Error:', chrome.runtime.lastError || response?.error);
       renderError(root);

@@ -6,9 +6,9 @@ export default class AmazonScraper extends BaseScraper {
     super('amazon');
   }
 
-  async scrape(url) {
-    const html = await this.fetchHtml(url);
-    const $ = cheerio.load(html);
+  async scrape(url, html = null) {
+    let html_to_use = html; if (!html_to_use) { html_to_use = await this.fetchHtml(url); }
+    const $ = cheerio.load(html_to_use);
 
     let name = null;
     let price = null;

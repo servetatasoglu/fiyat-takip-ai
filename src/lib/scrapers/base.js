@@ -131,9 +131,9 @@ export class BaseScraper {
   /**
    * Fail-Safe wrapper for execution. Ensures we don't crash the whole process.
    */
-  async safeScrape(url) {
+  async safeScrape(url, html = null) {
     try {
-      return await this.scrape(url);
+      return await this.scrape(url, html);
     } catch (err) {
       console.error(`[SCRAPER ERROR] ${this.platform} @ ${url}`, err.message);
       return {
@@ -148,7 +148,7 @@ export class BaseScraper {
   /**
    * Core scraping method to be implemented by child classes.
    */
-  async scrape(url) {
+  async scrape(url, html = null) {
     throw new Error('Not implemented');
   }
 }

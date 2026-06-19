@@ -15,7 +15,7 @@ export function detectPlatform(url) {
   }
 }
 
-export async function scrapeProduct(url) {
+export async function scrapeProduct(url, html = null) {
   const platform = detectPlatform(url);
   if (!platform) {
     throw new Error('Desteklenmeyen platform URL\'si.');
@@ -33,5 +33,5 @@ export async function scrapeProduct(url) {
     scraper = new AmazonScraper();
   }
 
-  return scraper.safeScrape(url);
+  return scraper.safeScrape(url, html);
 }

@@ -6,8 +6,10 @@ export default class TrendyolScraper extends BaseScraper {
     super('trendyol');
   }
 
-  async scrape(url) {
-    const html = await this.fetchHtml(url);
+  async scrape(url, html = null) {
+    if (!html) {
+      html = await this.fetchHtml(url);
+    }
     const $ = cheerio.load(html);
 
     let name = null;
